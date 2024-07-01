@@ -21,31 +21,36 @@ class CopyRolesPermissions(Document):
         on_update method to copy permissions from the source role to the target role
         after the document is saved.
         """
-        # Ensure both target and source roles are specified
-        if not self.get("target_role") or not self.get("source_role"):
-            frappe.throw("Both target and source roles must be specified")
+        try:
+            # Ensure both target and source roles are specified
+            if not self.get("target_role") or not self.get("source_role"):
+                frappe.throw("Both target and source roles must be specified")
 
-        # Get permissions of the source role
-        role_permissions = get_permissions(doctype=self.get("access_doctype"), role=self.source_role)
+            # Get permissions of the source role
+            role_permissions = get_permissions(doctype=self.get("access_doctype"), role=self.source_role)
 
-        # Iterate through each permission and copy it to the target role
-        for perm in role_permissions:
-            for right in rights:
-                if perm.get(right, 0):
-                    # Add permission to the target role
-                    add(
-                        parent=perm.get("parent"),
-                        role=self.target_role,
-                        permlevel=perm.get("permlevel", 0)
-                    )
-                    # Update permission with the specific rights and if_owner flag
-                    update(
-                        doctype=perm.get("parent"),
-                        role=self.target_role,
-                        permlevel=perm.get("permlevel", 0),
-                        ptype=right,
-                        value=perm.get(right, 0),
-                        if_owner=perm.get("if_owner", 0)
-                    )
+            # Iterate through each permission and copy it to the target role
+            for perm in role_permissions:
+                for right in rights:
+                    if perm.get(right, 0):
+                        # Add permission to the target role
+                        add(
+                            parent=perm.get("parent"),
+                            role=self.target_role,
+                            permlevel=perm.get("permlevel", 0)
+                        )
+                        # Update permission with the specific rights and if_owner flag
+                        update(
+                            doctype=perm.get("parent"),
+                            role=self.target_role,
+                            permlevel=perm.get("permlevel", 0),
+                            ptype=right,
+                            value=perm.get(right, 0),
+                            if_owner=perm.get("if_owner", 0)
+                        )
 
-        frappe.msgprint(f"Permissions from role {self.source_role} have been copied to role {self.target_role}.")
+            frappe.msgprint(f"Permissions from role {self.source_role} have been copied to role {self.target_role}.")
+
+        except Exception as e:
+            frappe.log_error(f"Error copying permissions: {str(e)}")
+            frappe.throw("An error occurred while copying permissions. Please check the logs for details.")
