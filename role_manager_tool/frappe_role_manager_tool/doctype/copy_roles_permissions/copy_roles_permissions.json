@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-01 21:43:32.110881",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "access_doctype",
+  "section_break_uwez",
+  "target_role",
+  "column_break_ccly",
+  "source_role"
+ ],
+ "fields": [
+  {
+   "description": "Keep Empty If Want Copy All Doctypes Roles",
+   "fieldname": "access_doctype",
+   "fieldtype": "Link",
+   "label": "Access Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "section_break_uwez",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "target_role",
+   "fieldtype": "Link",
+   "label": "Target Role",
+   "options": "Role"
+  },
+  {
+   "fieldname": "column_break_ccly",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_role",
+   "fieldtype": "Link",
+   "label": "Source Role",
+   "options": "Role"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-07-01 21:46:26.461506",
+ "modified_by": "Administrator",
+ "module": "Frappe Role Manager Tool",
+ "name": "Copy Roles Permissions",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
