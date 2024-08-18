@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2024-08-17 23:15:39.247222",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-08-17 23:15:39.247222",
+ "modified_by": "Administrator",
+ "module": "Frappe Role Manager Tool",
+ "name": "user-allowed-modules",
+ "owner": "Administrator",
+ "page_name": "user-allowed-modules",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "User Allowed Modules"
+}
