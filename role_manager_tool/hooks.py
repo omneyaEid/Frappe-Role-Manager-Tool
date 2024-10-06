@@ -4,6 +4,13 @@ app_publisher = "omneyaeid827@gmail.com"
 app_description = "Frappe Role Manager Tool"
 app_email = " omneyaeid827@gmail.com"
 app_license = "mit"
+
+# include js in doctype views
+
+doctype_js = {
+    "User": "public/js/user.js",
+}
+
 # required_apps = []
 
 # Includes in <head>
