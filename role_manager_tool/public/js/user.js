@@ -1,7 +1,7 @@
 frappe.ui.form.on("User", {
     refresh: function (frm) {
         // Check if the current user is the Administrator
-        if (frappe.session.user === "Administrator") {
+        if (frappe.user.has_role("User Manager")) {
             frm.add_custom_button(
                 __("Switch To User"),
                 function () {

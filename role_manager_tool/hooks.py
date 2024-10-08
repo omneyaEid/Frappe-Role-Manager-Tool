@@ -11,6 +11,10 @@ doctype_js = {
     "User": "public/js/user.js",
 }
 
+fixtures = [
+    "Role"
+]
+
 # required_apps = []
 
 # Includes in <head>
