@@ -22,7 +22,7 @@ class CopyRolesPermissions(Document):
         to the target role after the document is saved.
         """
         if not self.get("target_role") or not self.get("source_role"):
-            frappe.throw("Both target and source roles must be specified")
+            return 
 
         # Enqueue the copying process to run in the background
         frappe.enqueue(
